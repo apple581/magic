@@ -1,0 +1,396 @@
+body{
+    margin: 0;
+    background-color: rgb(19, 12, 25);
+}
+
+.openbtn1{
+    /*はじめは非表示に*/
+  display: none;
+    /*ボタンの位置*/
+  position:fixed;
+  top:10px;
+  right: 10px;
+  z-index: 999;
+    /*ボタンの形状*/
+  background:#666;
+  cursor: pointer;
+    width: 50px;
+    height:50px;
+  border-radius: 5px;
+}
+
+/*ボタンのアイコン設定*/
+.openbtn1 span{
+    display: inline-block;
+    transition: all .4s;
+    position: absolute;
+    left: 14px;
+    height: 3px;
+    border-radius: 2px;
+  background-color: rgb(255, 255, 255);
+    width: 45%;
+  }
+
+.openbtn1 span:nth-of-type(1) {
+  top:15px; 
+}
+
+.openbtn1 span:nth-of-type(2) {
+  top:23px;
+}
+
+.openbtn1 span:nth-of-type(3) {
+  top:31px;
+}
+
+/*activeクラスが付与された後のボタンのアイコン設定*/
+.openbtn1.active span:nth-of-type(1) {
+    top: 18px;
+    left: 18px;
+    transform: translateY(6px) rotate(-45deg);
+    width: 30%;
+}
+
+.openbtn1.active span:nth-of-type(2) {
+  opacity: 0;
+}
+
+.openbtn1.active span:nth-of-type(3){
+    top: 30px;
+    left: 18px;
+    transform: translateY(-6px) rotate(45deg);
+    width: 30%;
+}
+
+/*fadeDownクラスが付与された後のボタンの出現アニメーション設定*/
+.fadeDown {
+    animation-name: fadeDownAnime;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+    opacity: 0;
+    display: block;
+}
+@keyframes fadeDownAnime{
+  from {
+    opacity: 0;
+  transform: translateY(-100px);
+  }
+
+  to {
+    opacity: 1;
+  transform: translateY(0);
+  }
+}
+
+
+/*========= ヘッダーナビゲーションのためのCSS ===============*/
+
+/*==ヘッダーの形状*/
+#header{
+  height: 70px;
+  width:auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background:rgb(0, 0, 0);
+  color:#fff;
+  text-align: center;
+  padding: 10px;
+}
+
+
+
+.back img{
+  text-align: center;
+  animation-name: fade;
+  animation-duration:2s;
+  max-width: 100%;
+  height: auto;
+  
+}
+
+@keyframes fade{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 5;
+  }
+}
+
+h1 img{
+  width: 130px;
+  height: auto;
+  margin-top: 10px;
+  z-index: 99;
+}
+
+/*.doneクラスがついたヘッダー*/
+#header.dnone {
+  opacity: 0;/*透過0にして非表示に*/
+}
+
+/*メニューボタンをクリックした際に付与されるpanelactiveクラスがついたら*/
+#header.dnone.panelactive {
+  opacity: 1;/*不透明にして出現*/
+}
+
+
+/*==ヘッダーのテキストナビゲーションの形状*/
+#g-navi ul{
+  list-style: none;
+  display: flex;
+  justify-content: center;
+}
+
+#g-navi ul li a{
+  display: block;
+  text-decoration: none;
+  color: rgb(189, 189, 189);
+  padding:10px;
+  font-size: min(2vw,em);
+}
+
+#g-navi ul li.current a,
+#g-navi ul li a:hover{
+  color:rgb(168, 168, 168); 
+}
+
+/*.doneクラスがついたヘッダーのテキストナビゲーションの形状*/
+#header.dnone #g-navi{
+    /*固定位置にして最背面に*/
+    position:fixed;
+  top: 0;
+    left: 0;
+  z-index: -1;
+    /*高さと幅*/  
+  width:100%;
+  height: 100vh;
+    /*天地中央＆テキスト中央揃え*/  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+    /*はじめは透過0に*/  
+    opacity: 0;
+  transition: all 0.4s;
+}
+
+/*メニューボタンをクリックした際に付与されるpanelactiveクラスがついたナビゲーションの形状*/
+#header.dnone.panelactive #g-navi{
+  opacity: 1;/*不透明に*/
+  z-index:3;/*最前面に*/
+  background:rgb(226, 226, 226);
+}
+
+#header.dnone.panelactive #g-navi ul{
+  display:block;/*flexの横並びをblockにして縦並びに*/
+}
+
+
+/*リストの形状*/
+
+#header.dnone.panelactive #g-navi li a{
+  color: #333;
+  text-decoration: none;
+  padding:10px;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: bold;
+  transition:all 0.3s;
+}
+
+
+.top_image {
+	width: 100%;
+	height: auto;
+	margin: 0 auto 60px auto;
+	text-align: center;
+}
+.top_image img {
+	width: 100%;
+	height: auto;
+}
+.content {
+	width: 1070px;
+	height: auto;
+	margin: auto;
+	margin-bottom: 60px;
+	overflow: auto;
+	color: #333;
+}
+.content img { 
+	width: 30em;
+	float: left;
+	margin: 20px;
+}
+.content_text {
+	width: 420px;
+	margin-bottom: 40px;
+	overflow: auto;
+	line-height: 2em;
+}
+.content_text h2 {
+	color: #950000;
+	font-size: 22px;
+	font-weight: normal;
+}
+.price {
+	color: #770303;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+.content_text p{
+  color: #d6d6d6;
+	font-size: 18px;
+	font-weight: normal;
+}
+
+.item_select { 
+	width:260px;
+	height: 60px;
+	margin-bottom: 20px;
+	padding:10px;
+	float: left;
+	font-size:16px;
+	border:solid 1px #ccc;
+	border-radius: 3px;
+	cursor: pointer;
+	outline:none;
+}
+
+
+
+
+/* From cssbuttons.io */
+.button {
+  display: inline-block;
+  padding: 12px 24px;
+  border: 1px solid #4f4f4f;
+  border-radius: 4px;
+  transition: all 0.2s ease-in;
+  position: relative;
+  overflow: hidden;
+  font-size: 19px;
+  color: rgb(103, 103, 103);
+  z-index: 1;
+  background-color: #060606;
+  margin-left: 2em;
+ }
+ 
+ .button:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.25);
+  top: 100%;
+  width: 140%;
+  height: 180%;
+  background-color: rgba(159, 159, 159, 0.05);
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+ }
+ 
+ .button:after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  transform: translateX(-50%) scaleY(1) scaleX(1.45);
+  top: 180%;
+  width: 160%;
+  height: 190%;
+  background-color: #2b0b44;
+  border-radius: 50%;
+  display: block;
+  transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+  z-index: -1;
+ }
+ 
+ .button:hover {
+  color: #494949;
+  border: 1px solid #2b0b44;
+ }
+ 
+ .button:hover:before {
+  top: -35%;
+  background-color: #2b0b44;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+ }
+ 
+ .button:hover:after {
+  top: -45%;
+  background-color: #2b0b44;
+  transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+ }
+
+ .setumei{
+   display: flex;
+   justify-content: center;
+   gap: 2em;
+   
+ }
+
+ [class^=setumei-]{
+    width: 18em; 
+    height: 25em;
+    background-color: rgb(0, 0, 0);
+    border-radius: 10px;
+    justify-content: center;
+    text-align: center;
+   
+ }
+
+ small{
+  height: 10em;
+}
+
+               footer{
+                 color: #fff;
+                 background-color: #382460;
+                 text-align: center;
+                 
+               }
+
+               #area-2{
+                 height: 30em;
+               }
+
+               .setumei-1 img{
+                width: 8vmax;
+                margin: 1em;
+              }
+              .setumei-2 img{
+                width: 10vmax;
+                margin: 1em;
+              }
+              .setumei-3 img{
+                width: 8vmax;
+                margin: 1em;
+              }
+               .setumei-4 img{
+                 width: 10vmax;
+                 margin: 1em;
+               }
+
+               h6{
+                 color: #fff;
+               }
+               
+               hr{
+                border-width: 3px 0px 0px 0px; /* 太さ */
+                border-style: solid; /* 線種 */
+                border-color: rgb(158, 158, 158);   /* 線色 */
+                height: 1px;         /* 高さ(※古いIE用) */
+                width: 8em;
+               }
+
+              h5{
+                color: #fff;
+                margin: 2em;
+              }
+
+              
